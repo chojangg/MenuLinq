@@ -42,6 +42,43 @@ namespace MenuLinq
             InitializeComponent();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            menuBindingSource.DataSource = menus;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            menuBindingSource.DataSource = from food in menus
+                                           orderby food.Name
+                                           select food;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            menuBindingSource.DataSource = from food in menus
+                                           orderby food.Price
+                                           select food;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            menuBindingSource.DataSource = from food in menus
+                                           where food.Type == "Drink"
+                                           select food;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            menuBindingSource.DataSource = from food in menus
+                                           where food.Star >= 4
+                                           orderby food.Star descending
+                                           select food;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            menuBindingSource.DataSource = menus;
+        }
     }
 }
